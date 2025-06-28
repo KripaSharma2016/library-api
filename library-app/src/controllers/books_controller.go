@@ -27,6 +27,16 @@ func GetBooks(c *gin.Context) {
     c.JSON(http.StatusOK, books)
 }
 
+// GetBook godoc
+// @Summary      Get a book by ID
+// @Description  Get details of a book by its ID
+// @Tags         books
+// @Accept       json
+// @Produce      json
+// @Param        id   path      int  true  "Book ID"
+// @Success      200  {object}  models.Book
+// @Failure      404  {object}  gin.H
+// @Router       /books/{id} [get]
 func GetBook(c *gin.Context) {
     id := c.Param("id")
     var book models.Book
@@ -65,6 +75,18 @@ func CreateBook(c *gin.Context) {
     c.JSON(http.StatusCreated, book)
 }
 
+// UpdateBook godoc
+// @Summary      Update a book
+// @Description  Update a book's details by ID
+// @Tags         books
+// @Accept       json
+// @Produce      json
+// @Param        id    path      int         true  "Book ID"
+// @Param        book  body      models.Book true  "Book object to update"
+// @Success      200   {object}  models.Book
+// @Failure      400   {object}  gin.H
+// @Failure      500   {object}  gin.H
+// @Router       /books/{id} [put]
 func UpdateBook(c *gin.Context) {
     id := c.Param("id")
     var book models.Book
@@ -86,6 +108,16 @@ func UpdateBook(c *gin.Context) {
     c.JSON(http.StatusOK, book)
 }
 
+// DeleteBook godoc
+// @Summary      Delete a book
+// @Description  Delete a book by its ID
+// @Tags         books
+// @Accept       json
+// @Produce      json
+// @Param        id   path      int  true  "Book ID"
+// @Success      204  {string}  string  "No Content"
+// @Failure      500  {object}  gin.H
+// @Router       /books/{id} [delete]
 func DeleteBook(c *gin.Context) {
     id := c.Param("id")
     _, err := config.DB.Exec("DELETE FROM books WHERE id=$1", id)
