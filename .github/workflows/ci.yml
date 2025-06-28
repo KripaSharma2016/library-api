@@ -35,6 +35,7 @@ jobs:
 
       - name: Install Dependencies
         run: go mod download
+        working-directory: ./library-app
 
       - name: Run Build
         run: go build -v ./...
