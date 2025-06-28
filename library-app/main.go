@@ -1,3 +1,10 @@
+// @title Public Library API
+// @version 1.0
+// @description A simple REST API to manage library books
+// @host localhost:8080
+// @BasePath /
+// @schemes http
+
 package main
 
 import (

@@ -9,6 +9,14 @@ import (
     "library-app/src/models"
 )
 
+// GetBooks godoc
+// @Summary      List all books
+// @Description  Get all books from the library
+// @Tags         books
+// @Accept       json
+// @Produce      json
+// @Success      200  {array}  models.Book
+// @Router       /books [get]
 func GetBooks(c *gin.Context) {
     var books []models.Book
     err := config.DB.Select(&books, "SELECT * FROM books")
