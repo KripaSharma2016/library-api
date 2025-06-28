@@ -35,6 +35,22 @@ paths:
       summary: List all books
       tags:
       - books
+    post:
+      consumes:
+      - application/json
+      description: Create book in  library
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Book'
+            type: array
+      summary: Create book
+      tags:
+      - books
 schemes:
 - http
 swagger: "2.0"

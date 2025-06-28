@@ -38,6 +38,17 @@ func GetBook(c *gin.Context) {
     c.JSON(http.StatusOK, book)
 }
 
+// CreateBook godoc
+// @Summary      Add a new book
+// @Description  Create a new book by providing title, author, and ISBN
+// @Tags         books
+// @Accept       json
+// @Produce      json
+// @Param        book  body  models.Book  true  "Book object to be created"
+// @Success      201   {object}  models.Book
+// @Failure      400   {object}  gin.H
+// @Failure      500   {object}  gin.H
+// @Router       /books [post]
 func CreateBook(c *gin.Context) {
     var book models.Book
     if err := c.ShouldBindJSON(&book); err != nil {
